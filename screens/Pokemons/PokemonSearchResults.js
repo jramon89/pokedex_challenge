@@ -7,7 +7,7 @@ import PokemonComponent from "../../components/PkmComponents";
 import PkmLogoTitle from "../../components/Shared/PkmLogoTitle";
 
 const PokemonSearch = (props) => {
-    const [value, setValue] = React.useState('')
+    const [value, setValue] = React.useState('');
     const [items, setItems] = React.useState([]);
 
     // this state was going to be used for filter by string
@@ -41,7 +41,7 @@ const PokemonSearch = (props) => {
                 })
         }
         return function cleanup() {
-            setItems([])
+            setItems([]);
         }
     },[value])
 

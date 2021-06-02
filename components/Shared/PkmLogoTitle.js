@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
       resizeMode: 'cover'
     },
     logoTitle: {
-        fontSize: '1em'
+        fontSize: 12
     },
     image: {
         margin: 2,

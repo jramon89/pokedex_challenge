@@ -2,54 +2,64 @@ import * as React from 'react';
 import {
     View,
     Text,
-    Button,
     FlatList,
     StyleSheet,
     Image,
-    ScrollView,
-    ListView,
-    TouchableHighlight,
-    Touchable
+    SafeAreaView,
+    TouchableOpacity,
+    ActivityIndicator
 } from "react-native";
 
 
 
-const Item = ({ title, price, image, navigation }) => (
+const Item = ({ name, index, image, navigation, data }) => (
     <View style={ styles.container } >
-        <TouchableHighlight onPress={ () => navigation.navigate('PokemonDetails', {
-            id: 123456
+        <TouchableOpacity onPress={ () => navigation.navigate('PokemonDetails', {
+            data,
+            index
         })}>
             <View style={ styles.itemContainer }>
                 <View style={ styles.image }>
-                    <Image source={{ uri: image }}  style={{width: 150, height: 80}}/>
+                    <Image source={{ uri: image }}  style={{width: 100, height: 80}}/>
                 </View>
                 <View>
                     <Text style={{
                         width: 'auto',
-                        marginBottom: 5
-                    }}>{title}</Text>
-                    <Text>
-                        ${price}.00 MXN
-                    </Text>
+                        marginBottom: 5,
+                        textAlign: 'center'
+                    }}>{name}</Text>
                 </View>
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     </View>
 );
 
 const PokemonComponent = (props) => {
-
-    const renderItem = ({ item }) => (
-        <Item title={ item.title } price={ item.price } image={ item.image } {...props}/>
-    );
-
+    const renderItem = ({ item, index }) => (
+        <Item
+            {...props}
+            data={ item }
+            index={ index }
+            name={ item.name }
+            image={ item.images && item.images.front_default }
+           /> );
     return(
-        <ScrollView>
-            <Text>{ props.searchParam }</Text>
-            <View>
-                <FlatList data={ props.data } renderItem={ renderItem }  numColumns={ 3 }/>
-            </View>
-        </ScrollView>
+        <SafeAreaView>
+            <FlatList
+                data={props.items}
+                keyExtractor={(item, index) => index.toString()}
+                onEndReached={props.onGetItems}
+                onEndReachedThreshold={0.5}
+                renderItem={renderItem}
+                ListFooterComponent={() => (
+                        <View>
+                            <View style={[ styles.loading, styles.loadingCircle ]}>
+                                <ActivityIndicator size="large"/>
+                            </View>
+                        </View>
+                    )}
+                numColumns={3}/>
+        </SafeAreaView>
     );
 }
 
@@ -71,6 +81,22 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    loading: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    loadingCircle: {
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        padding: 10
+
+
+    },
+    notFound: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%'
     }
 })
 

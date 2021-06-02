@@ -1,18 +1,25 @@
 import * as React from 'react';
-import { View, Text, Button } from "react-native";
+import {View, Text, Button, StyleSheet} from "react-native";
 
-const Products = (props) => {
+const GymComponent = (props) => (
+    <View style={styles.message}>
+        <Text style={styles.font}>
+            No service provided
+        </Text>
+    </View>
+)
+export default GymComponent;
 
-    console.log('Products', props);
-    return (
-        <View>
-            <Text>
-                Products
-            </Text>
-            <Button title={"Details"} onPress={ () => props.navigation.navigate('ProductDetailss', {
-                id: 123456
-            })}/>
-        </View>
-    );
-}
-export default Products;
+const styles = StyleSheet.create({
+    message: {
+        fontSize: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20
+    },
+    font: {
+
+        fontSize: 20
+    }
+})
+

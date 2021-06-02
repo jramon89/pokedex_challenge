@@ -2,22 +2,22 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-import Views from "../views";
+import Views from "../screens";
 
 
 const Stack = createStackNavigator();
 
 
-const ProductStack = () => {
+const GymStack = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Productsxx" component={ Views.Gym } initialParams={{id: 89}}/>
+            <Stack.Screen name="Gym" component={ Views.Gym } initialParams={{id: 89}}/>
             <Stack.Screen
-                name="ProductDetailss"
+                name="GymDetails"
                 component={ Views.GymDetails }
-                options={{ title: 'Product details' }}/>
+                options={{ title: '' }}/>
         </Stack.Navigator>
     );
 }
 
-export default ProductStack;
+export default GymStack;

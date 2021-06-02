@@ -45,7 +45,7 @@ const Pokemon = (props) => {
 
         return function cleanup() {
             setShouldFetch(false);
-            setData([])
+            setData([]);
         }
 
     }, [page, shouldFetch]);
