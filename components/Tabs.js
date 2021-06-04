@@ -29,7 +29,7 @@ const Tabs = () => {
             }
        })}
        tabBarOptions={{
-           activeTintColor: '#ff0000',
+           activeTintColor: '#218de0',
            inactiveTintColor: 'grey'
        }}>
 

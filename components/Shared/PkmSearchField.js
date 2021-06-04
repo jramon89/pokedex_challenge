@@ -1,12 +1,27 @@
 import * as React from 'react';
-import {View, Text, Image, StyleSheet, TextInput, Dimensions } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    TextInput,
+    Dimensions,
+    Platform
+} from "react-native";
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
+const PkmSearchField = ({ onChange, onFocus, withFullwidth, autoFocus, value, navigation }) => {
+    const size = Platform.OS === 'ios' ? 150 : 60
+    const width = withFullwidth ? Dimensions.get('window').width - size : 200;
+    const input = React.useRef();
 
-const PkmSearchField = ({ onChange, onFocus, withFullwidth, autoFocus, value, }) => {
-
-    const width = withFullwidth ? Dimensions.get('window').width - 60 : 200;
+    React.useEffect(() => {
+        return navigation.addListener('focus', () => {
+            input.current.blur();
+        })
+    })
 
     return (
         <View>
@@ -24,6 +39,7 @@ const PkmSearchField = ({ onChange, onFocus, withFullwidth, autoFocus, value, })
                     </Text>
                 </View>
                 <TextInput
+                    ref={ input }
                     value={ value }
                     autoFocus={ autoFocus }
                     placeholder="Search..."
@@ -51,11 +67,12 @@ const styles = StyleSheet.create({
     iconBox: {
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 5,
+        marginTop: 4,
+        marginLeft: 4
     },
     input: {
-        //width: ,
-        padding: 4,
+        height: 35,
+        padding: 8,
         flex: 1,
         alignSelf: 'center',
     },

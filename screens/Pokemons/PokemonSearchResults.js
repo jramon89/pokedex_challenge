@@ -22,6 +22,7 @@ const PokemonSearch = (props) => {
 
     props.navigation.setOptions({
         headerRight: () => (<PkmSearchField
+            {...props}
             onChange={ onChange }
             withFullwidth={ true }
             autoFocus={true}

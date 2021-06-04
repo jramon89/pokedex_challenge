@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, Image, StyleSheet} from "react-native";
+import {View, Text, Image, StyleSheet, Dimensions} from "react-native";
 
 
 const PkmLogoTitle = (props) => {
@@ -14,12 +14,15 @@ const PkmLogoTitle = (props) => {
     );
 }
 
+
+const width = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
     container: {
         margin: 10,
         flexDirection: 'row',
         alignItems: 'center',
-        width: 150
+        width: width,
     },
     iconBox: {
       alignItems: 'center',

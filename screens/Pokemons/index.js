@@ -3,6 +3,7 @@ import {View, Animated, Button} from "react-native";
 import PokemonComponent from '../../components/PkmComponents'
 import PkmLogoTitle from "../../components/Shared/PkmLogoTitle";
 import PkmSearchField from "../../components/Shared/PkmSearchField";
+import PkmHeaderOptions from "../../components/Shared/PkmHeaderOptions";
 
 import apiConfig from "../../api";
 
@@ -19,12 +20,18 @@ const Pokemon = (props) => {
 
     props.navigation.setOptions({
         headerTitle: props => (<PkmLogoTitle { ...props } title="Pokedex" />),
-        headerRight: () => (<PkmSearchField onFocus={ onFocus } value={ value }/>),
+        headerRight: () => (<PkmSearchField onFocus={ onFocus } value={ value } {...props}/>),
     })
 
 
     const fetchMore = React.useCallback(() => setShouldFetch(true), []);
-
+      /*
+    React.useEffect(() => {
+        return props.navigation.addListener('focus', () => {
+            setValue('')
+        })
+    })
+    */
 
     React.useEffect(() => {
 
@@ -80,6 +87,13 @@ const Pokemon = (props) => {
 
     const onFocus = () => {
         props.navigation.navigate('PokemonSearchResults');
+    }
+
+    const onChange = (value) => {
+        setValue(value)
+        props.navigation.navigate('PokemonSearchResults', {
+            value
+        });
     }
 
     return (
