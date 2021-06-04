@@ -1,17 +1,21 @@
 import * as React from 'react';
-import {View, Text, Image, StyleSheet, Dimensions} from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import {View, StyleSheet, TouchableOpacity } from "react-native";
+import Micons from "react-native-vector-icons/MaterialIcons";
 
 
-const PkmHeaderOptions = (props) => {
+const PkmHeaderOptions = ({ onFocus }) => {
 
     return (
         <View style={ styles.container } >
             <View style={ styles.iconBox}>
-                <Ionicons name="ios-search" size={30} color={'#333'} onPress={ props.onFocus }></Ionicons>
+                <TouchableOpacity onPress={ onFocus }>
+                    <Micons name="search" size={35} color={'#555'}></Micons>
+                </TouchableOpacity>
             </View>
             <View style={ styles.iconBox}>
-                <Ionicons name="ios-flag" size={30} color={'#333'}></Ionicons>
+                <TouchableOpacity>
+                    <Micons name="translate" size={30} color={'#555'}></Micons>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -20,14 +24,14 @@ const PkmHeaderOptions = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 10,
+        margin: 5,
         flexDirection: 'row',
         alignItems: 'center',
     },
     iconBox: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginRight: 10,
+        marginRight: 5,
         width: 40,
         height: 40,
     },

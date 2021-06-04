@@ -19,8 +19,8 @@ const Pokemon = (props) => {
 
 
     props.navigation.setOptions({
-        headerTitle: props => (<PkmLogoTitle { ...props } title="Pokedex" />),
-        headerRight: () => (<PkmSearchField onFocus={ onFocus } value={ value } {...props}/>),
+        headerTitle: props => (<PkmLogoTitle { ...props } title="PoKedeX" />),
+        headerRight: () => (<PkmHeaderOptions onFocus={ onFocus } {...props}/>),
     })
 
 

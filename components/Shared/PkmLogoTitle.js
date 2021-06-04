@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
       resizeMode: 'cover'
     },
     logoTitle: {
-        fontSize: 12
+        fontSize: 16,
+        color: '#555'
     },
     image: {
         margin: 2,

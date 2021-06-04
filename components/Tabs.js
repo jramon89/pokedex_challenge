@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Micons from 'react-native-vector-icons/MaterialIcons';
 
 import TrainerStack from "../stacks/TrainerStack";
 import GymStack from "../stacks/GymStack";
@@ -18,14 +18,14 @@ const Tabs = () => {
                 let iconName;
 
                 if (route.name === 'Trainers') {
-                    iconName = focused ? 'ios-man' : 'ios-man';
+                    iconName = focused ? 'face' : 'face';
                 } else if (route.name === 'Pokemons') {
-                    iconName = focused ? 'ios-bug' : 'ios-bug';
+                    iconName = focused ? 'adjust' : 'adjust';
                 } else if (route.name === 'Gym') {
-                    iconName = focused ? 'ios-ribbon' : 'ios-ribbon';
+                    iconName = focused ? 'home' : 'home';
                 }
 
-                return <Ionicons name={ iconName } size={ size } color={ color }/>
+                return <Micons name={ iconName } size={ size } color={ color }/>
             }
        })}
        tabBarOptions={{
